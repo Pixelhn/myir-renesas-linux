@@ -17,6 +17,7 @@
 		serial1 = &scif1;
 		serial2 = &scif2;
 		serial3 = &scif3;
+		serial4 = &sci0;
 		mmc0 = &sdhi0;
 		mmc1 = &sdhi1;
 		ethernet0 = &eth0;
@@ -292,7 +293,6 @@
 &ohci0 {
 	dr_mode = "otg";
 	status = "okay";
-
 	port {
 		usbotg_hs_ep: endpoint {
 				remote-endpoint = <&con_usbotg_hs_ep>;
@@ -359,6 +359,11 @@
 	i2c1_pins: i2c1 {
 		pins = "RIIC1_SDA", "RIIC1_SCL";
 		input-enable;
+	};
+
+	sci0_pins: sci0 {
+		pinmux = <RZG2L_PORT_PINMUX(0, 0, 5)>, /* TxD */
+			 <RZG2L_PORT_PINMUX(0, 1, 5)>; /* RxD */
 	};
 
 	scif0_pins: scif0 {
@@ -473,6 +478,12 @@
 	};
 };
 
+&sci0 {
+	pinctrl-0 = <&sci0_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
 /* console */
 &scif0 {
 	pinctrl-0 = <&scif0_pins>;
@@ -524,8 +535,6 @@
 	vqmmc-supply = <&reg_3p3v>;
 	cd-gpios = <&pinctrl RZG2L_GPIO(0, 2) GPIO_ACTIVE_LOW>;
 	bus-width = <4>;
-	// sd-uhs-sdr50;
-	// sd-uhs-sdr104;
 	status = "okay";
 };
 

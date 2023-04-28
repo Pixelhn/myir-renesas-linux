@@ -32,6 +32,8 @@ enum {
 	HSRTRGR,			/* Rx FIFO Data Count Trigger Register */
 	HSTTRGR,			/* Tx FIFO Data Count Trigger Register */
 	SEMR,				/* Serial extended mode register */
+	MDDR,				/* Modulation Duty Register */
+	SCIGSEMR,			/* Extended Mode Register - SCIg only */
 
 	SCIx_NR_REGS,
 };
@@ -58,6 +60,9 @@ enum {
 #define SCSMR_SRC_17	0x0500	/* Sampling rate 1/17 */
 #define SCSMR_SRC_19	0x0600	/* Sampling rate 1/19 */
 #define SCSMR_SRC_27	0x0700	/* Sampling rate 1/27 */
+
+/* Serial Control Register, RZ SCI only bits */
+#define SCSCR_TEIE	BIT(2)	/* Transmit End Interrupt Enable */
 
 /* Serial Control Register, SCIFA/SCIFB only bits */
 #define SCSCR_TDRQE	BIT(15)	/* Tx Data Transfer Request Enable */
@@ -157,6 +162,18 @@ enum {
  */
 #define SCCKS_CKS	BIT(15)	/* Select (H)SCK (1) or divided SC_CLK (0) */
 #define SCCKS_XIN	BIT(14)	/* SC_CLK uses bus clock (1) or SCIF_CLK (0) */
+
+/* Serial Extended Mode Register, RZ/G2L SCIFA only bits */
+#define SEMR_BRME	BIT(5)	/* Bit Rate Modulation Enable */
+#define SEMR_MDDRS	BIT(4)	/* Modulation Duty Register Select */
+
+/*
+ * Serial extended mode register (SEMR)
+ * This bit select the receiving start condition:
+ * 0: Start receiving data when at LOW
+ * 1: Start receiving data when a falling edge detected
+ */
+#define SCIGSEMR_RXDESEL	BIT(7)
 
 #define SCxSR_TEND(port)	(((port)->type == PORT_SCI) ? SCI_TEND   : SCIF_TEND)
 #define SCxSR_RDxF(port)	(((port)->type == PORT_SCI) ? SCI_RDRF   : SCIF_DR | SCIF_RDF)
