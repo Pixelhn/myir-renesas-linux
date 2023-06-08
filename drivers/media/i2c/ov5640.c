@@ -3376,6 +3376,8 @@ static int ov5640_probe(struct i2c_client *client)
 	if (IS_ERR(sensor->gate_gpio))
 		return PTR_ERR(sensor->gate_gpio);
 
+	gpiod_set_value_cansleep(sensor->gate_gpio, 1);
+
 	/* request optional power down pin */
 	sensor->pwdn_gpio = devm_gpiod_get_optional(dev, "powerdown",
 						    GPIOD_OUT_HIGH);
