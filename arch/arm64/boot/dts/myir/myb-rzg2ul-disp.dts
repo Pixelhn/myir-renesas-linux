@@ -186,6 +186,16 @@
 		clocks = <&clk_ext_audio>;
 	};
 
+	ft5x06: ft5x06@38 {
+		compatible = "edt,edt-ft5406", "edt,edt-ft5x06";
+		reg = <0x38>;
+		interrupt-parent = <&pinctrl>;
+		interrupts = <RZG2L_GPIO(18, 4) IRQ_TYPE_EDGE_FALLING>;
+		reset-gpios = <&NCA9555 3 GPIO_ACTIVE_LOW>;
+		touchscreen-size-x=<800>;
+		touchscreen-size-y=<480>;
+        };
+
 	versa3: versa3@68 {
 		compatible = "renesas,5p35023";
 		reg = <0x68>;

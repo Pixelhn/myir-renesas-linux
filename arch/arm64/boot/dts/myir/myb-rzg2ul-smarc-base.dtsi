@@ -80,7 +80,7 @@
 		status = "okay";
 		key-1 {
 			interrupt-parent = <&pinctrl>;
-			interrupts = <RZG2L_GPIO(18, 4) IRQ_TYPE_LEVEL_LOW>;
+			interrupts = <RZG2L_GPIO(4, 2) IRQ_TYPE_LEVEL_LOW>;
 			linux,code = <KEY_1>;
 			label = "user_key";
 		};
@@ -88,9 +88,8 @@
 
 	leds {
 		compatible = "gpio-leds";
-
 		led0 {
-			gpios = <&pinctrl RZG2L_GPIO(4, 2) GPIO_ACTIVE_LOW>;
+			gpios = <&NCA9555 2 GPIO_ACTIVE_LOW>;
 			label = "LED0";
 			default-state = "on";
 			linux,default-trigger = "heartbeat";
@@ -103,14 +102,7 @@
 			linux,default-trigger = "heartbeat";
 		};
 
-		led2 {
-			gpios = <&NCA9555 14 GPIO_ACTIVE_LOW>;
-			label = "LED2";
-			default-state = "on";
-			linux,default-trigger = "heartbeat";
-		};
 	};
-
 };
 
 &audio_clk1{
