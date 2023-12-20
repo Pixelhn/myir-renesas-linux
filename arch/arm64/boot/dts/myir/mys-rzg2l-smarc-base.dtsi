@@ -136,6 +136,28 @@
 		clock-frequency = <24000000>;
 	};
 
+	wifi_reg_on: regulator-wifi_reg_on {
+		compatible = "regulator-fixed";
+		regulator-name = "wl_reg_on";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		gpios = <&pinctrl RZG2L_GPIO(9, 0) GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		regulator-boot-on;
+		regulator-always-on;
+	};
+
+	bt_reg_on: regulator-bt_reg_on {
+		compatible = "regulator-fixed";
+		regulator-name = "bt_reg_on";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		gpios = <&pinctrl RZG2L_GPIO(8, 0) GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		regulator-boot-on;
+		regulator-always-on;
+	};
+
         backlight {
                 compatible = "pwm-backlight";
                 pwms = <&gpt4 0 50000>;
