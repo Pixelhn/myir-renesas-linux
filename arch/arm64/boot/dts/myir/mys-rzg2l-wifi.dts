@@ -87,12 +87,12 @@
 	sdhi1_pins_uhs: sd1_uhs {
 		sd1_data_uhs {
 			pins = "SD1_DATA0", "SD1_DATA1", "SD1_DATA2", "SD1_DATA3";
-			power-source  = <1800>;
+			power-source  = <3300>;
 		};
 
 		sd1_ctrl_uhs {
 			pins = "SD1_CLK", "SD1_CMD";
-			power-source  = <1800>;
+			power-source  = <3300>;
 		};
 		// sd1_mux {
 		// 	groups = "sdhi1_cd_b";
