@@ -2,7 +2,7 @@
 
 export PATH=${PATH}:/mnt/samba/Linux/lib/tools/aarch64/12/arm-gnu-toolchain-12.3.rel1-aarch64-aarch64-none-elf/bin
 
-make ARCH=arm64 CROSS_COMPILE=aarch64-none-elf- mys_g2lx_defconfig || exit
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-elf- rzg2l_defconfig || exit
 
 make ARCH=arm64 CROSS_COMPILE=aarch64-none-elf- -j8
 
